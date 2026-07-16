@@ -8,10 +8,15 @@ import joblib
 import numpy as np
 
 # Load Saved Files
-model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
-encoder = joblib.load("encoder.pkl")
+from pathlib import Path
+import joblib
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "models"
+
+model = joblib.load(MODEL_DIR / "model.pkl")
+scaler = joblib.load(MODEL_DIR / "scaler.pkl")
+encoder = joblib.load(MODEL_DIR / "encoder.pkl")
 
 def predict_house_price(
     longitude,
